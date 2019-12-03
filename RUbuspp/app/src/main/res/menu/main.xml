@@ -5,6 +5,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/about"
-        android:title="About"
+        android:title="@string/about"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/stops_action"
+        android:title="@string/stop"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/routes_action"
+        android:title="@string/route"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/myfav_action"
+        android:title="@string/myfav"
+        app:showAsAction="always"/>
+
 </menu>

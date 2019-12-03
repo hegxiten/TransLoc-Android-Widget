@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RUbuspp</string>
+    <string name="about">About</string>
+    <string name="route">Route</string>
+    <string name="stop">Stop</string>
+    <string name="myfav">Favs</string>
 </resources>

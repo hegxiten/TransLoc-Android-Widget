@@ -2,7 +2,8 @@ package com.hegxiten.rubuspp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
+
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -16,16 +17,16 @@ public class MainActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
+            getSupportFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .commit();
         }
 
         // Prevents user from pressing back to an empty activity
-        getFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
-                if (MainActivity.this.getFragmentManager().getBackStackEntryCount() == 0)
+                if (MainActivity.this.getSupportFragmentManager().getBackStackEntryCount() == 0)
                     MainActivity.this.finish();
             }
         });
