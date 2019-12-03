@@ -25,9 +25,7 @@ public interface TransLocClient {
     Observable<List<TransLocStop>> stops(@Query("agencies")String agencyId);
 
     @GET("/arrival-estimates.json")
-    Observable<List<TransLocArrival>> arrivalEstimates(
-            @Query("agencies") String agencyId,
-            @Query("routes") String routeId,
-            @Query("stops") String stopId
-    );
+    Observable<List<TransLocArrival>> arrivalEstimates(@Query("agencies") String agencyId,
+                                                       @Query("routes") String routeId,
+                                                       @Query("stops") String stopId);
 }

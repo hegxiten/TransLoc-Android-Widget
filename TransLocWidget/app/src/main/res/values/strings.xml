@@ -40,7 +40,7 @@
     <string name="set_text_color_button_txt">Set Text Color</string>
     <string name="bus_data">Bus Data:</string>
     <string name="bus_data_provider">TransLoc OpenAPI</string>
-    <string name="bus_data_provider_url">https://www.mashape.com/transloc/</string>
+    <string name="bus_data_provider_url">https://transloc-api-1-2.p.rapidapi.com/</string>
     <string name="disclaimer">Disclaimer:</string>
     <string name="disclaimer_txt">Bus data may not be 100% reliable</string>
     <string name="disclaimer_content">Some routes may show inaccurate or no arrival times at all.</string>

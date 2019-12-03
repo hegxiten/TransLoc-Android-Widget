@@ -38,8 +38,8 @@ public class Utils {
         AGENCY, ROUTE, STOP, ARRIVAL
     }
 
-    public static final String GET_ARRIVAL_ESTIMATES_URL = "https://transloc-api-1-2.p.mashape.com/arrival-estimates.json?agencies=";
-    public static final String BASE_URL = "https://transloc-api-1-2.p.mashape.com";
+    public static final String GET_ARRIVAL_ESTIMATES_URL = "https://transloc-api-1-2.p.rapidapi.com/arrival-estimates.json?agencies=";
+    public static final String BASE_URL = "https://transloc-api-1-2.p.rapidapi.com";
     private static final String FILE_NAME = "WidgetList";
     public static final String TAP_ON_WIDGET_ACTION = "TAPPED_ON_WIDGET";
 

@@ -43,7 +43,7 @@ import static com.shyamu.translocwidget.bl.Utils.TransLocDataType.ARRIVAL;
 
 public class MainActivity extends AppCompatActivity implements WidgetListFragment.OnFragmentInteractionListener {
     private static final String TAG = "MainActivity";
-    private static final String TRANSLOC_API_KEY= BuildConfig.TRANSLOC_API_KEY;
+    private static final String TRANSLOC_API_KEY = BuildConfig.TRANSLOC_API_KEY;
     private static ArrivalTimeWidget atw;
     private static int appWidgetId = 0;
 

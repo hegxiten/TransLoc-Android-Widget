@@ -1,14 +1,12 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
 
-    compileSdkVersion 22
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 23
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 10
         versionName "3.0.2"
     }
@@ -29,14 +27,14 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:design:22.2.1'
-    compile 'io.reactivex:rxandroid:0.24.0'
-    compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'com.squareup.okhttp:okhttp:2.2.0'
-    compile ('com.github.worker8:tourguide:1.0.11-SNAPSHOT@aar'){
+    implementation 'com.android.support:design:23.2.1'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'com.squareup.retrofit:retrofit:1.9.0'
+    implementation 'com.squareup.okhttp:okhttp:2.7.5'
+    implementation('com.github.worker8:tourguide:1.0.11-SNAPSHOT@aar'){
         transitive=true
     }
-    compile 'com.larswerkman:HoloColorPicker:1.5'
-    compile 'joda-time:joda-time:2.3'
+    implementation 'com.larswerkman:HoloColorPicker:1.5'
+    implementation 'joda-time:joda-time:2.10.5'
 
 }
