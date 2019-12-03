@@ -3,7 +3,7 @@
     android:id="@+id/widget_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shyamu.translocwidget.MainActivity"
+    tools:context=".MainActivity"
     tools:ignore="MergeRootFrame">
 
     <ProgressBar
@@ -13,7 +13,6 @@
         android:id="@+id/pbLoading"
         android:layout_gravity="center_horizontal"
         android:indeterminate="true"
-        android:visibility="invisible"
-    />
+        android:visibility="invisible"/>
 
 </FrameLayout>
