@@ -37,6 +37,7 @@ public class SelectAgencyFragment extends BaseFragment {
     private Subscription agenciesSub;
 
     public SelectAgencyFragment() {
+
     }
 
     @Override
@@ -46,8 +47,7 @@ public class SelectAgencyFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_add_agency, container, false);
         setHasOptionsMenu(true);
@@ -64,8 +64,7 @@ public class SelectAgencyFragment extends BaseFragment {
                         AGENCY);
         agenciesSub = client.agencies()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        agencies -> populateAgencyListView(agencies),
+                .subscribe(this::populateAgencyListView,
                         e -> handleServiceErrors(AGENCY, e, progressBar)
                 );
 

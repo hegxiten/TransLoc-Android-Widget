@@ -32,7 +32,7 @@ import static com.shyamu.translocwidget.bl.Utils.TransLocDataType.ARRIVAL;
 public class Provider extends AppWidgetProvider {
 
     private static final String TAG = "AppWidgetProvider";
-    private static final String TRANSLOC_API_KEY = BuildConfig.TRANSLOC_API_KEY;
+    private static final String TRANSLOC_API_KEY= BuildConfig.TRANSLOC_API_KEY;
 
     // Flag for knowing whether onUpdate is called from a tap on widget action
     // Used for showing/not showing toasts during onUpdate

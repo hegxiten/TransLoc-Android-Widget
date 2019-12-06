@@ -12,6 +12,7 @@ import com.shyamu.translocwidget.bl.Utils;
 public class BaseFragment extends Fragment {
     static final String TRANSLOC_API_KEY = BuildConfig.TRANSLOC_API_KEY;
 
+
     void handleServiceErrors(Utils.TransLocDataType errorFrom, Throwable e, ProgressBar progressBar) {
         Log.e("Fragments", "error in getting list of " + errorFrom, e);
         progressBar.setVisibility(View.INVISIBLE);
