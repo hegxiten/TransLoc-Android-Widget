@@ -35,7 +35,7 @@ public class Utils {
     private static final String TAG = "Utils";
 
     public enum TransLocDataType {
-        AGENCY, ROUTE, STOP, ARRIVAL
+        AGENCY, ROUTE, STOP, ARRIVAL, SEGMENT, VEHICLE
     }
 
     public static final String GET_ARRIVAL_ESTIMATES_URL = "https://transloc-api-1-2.p.rapidapi.com/arrival-estimates.json?agencies=";

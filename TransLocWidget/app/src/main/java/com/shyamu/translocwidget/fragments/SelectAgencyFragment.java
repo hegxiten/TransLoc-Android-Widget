@@ -26,6 +26,8 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 
 import static com.shyamu.translocwidget.bl.Utils.TransLocDataType.AGENCY;
+import static com.shyamu.translocwidget.bl.Utils.TransLocDataType.ARRIVAL;
+import static com.shyamu.translocwidget.bl.Utils.TransLocDataType.VEHICLE;
 
 public class SelectAgencyFragment extends BaseFragment {
 
@@ -57,14 +59,15 @@ public class SelectAgencyFragment extends BaseFragment {
         agencyListView.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
         TransLocClient client =
-                ServiceGenerator.createService(TransLocClient.class,
+                ServiceGenerator.createService(
+                        TransLocClient.class,
                         Utils.BASE_URL,
                         TRANSLOC_API_KEY,
-                        null,
+                        "1323",
                         AGENCY);
         agenciesSub = client.agencies()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::populateAgencyListView,
+                .subscribe(agencies -> populateAgencyListView(agencies),
                         e -> handleServiceErrors(AGENCY, e, progressBar)
                 );
 

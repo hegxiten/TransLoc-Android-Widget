@@ -17,24 +17,24 @@ public class ServiceGenerator {
     // No need to instantiate this class.
     private ServiceGenerator() {}
 
-    public static <S> S createService(Class<S> serviceClass,
+    public static <S> S createService(Class<S> clientClass,
                                       String baseUrl,
                                       final String key,
                                       String agencyId,
                                       TransLocDataType type)
     {
         Gson gson = new GsonBuilder()
-                .registerTypeAdapterFactory(new ItemTypeAdapterFactory(agencyId, type))
+                .registerTypeAdapterFactory(new ItemTypeAdapterFactory(agencyId, type)) // policy JSON
                 .setDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'")
                 .create();
 
         RestAdapter.Builder builder = new RestAdapter.Builder()
-                .setEndpoint(com.shyamu.translocwidget.bl.Utils.BASE_URL)
+                .setEndpoint(baseUrl)
                 .setClient(new OkClient(new OkHttpClient()))
                 .setConverter(new GsonConverter(gson))
                 .setRequestInterceptor(request -> request.addHeader("x-rapidapi-host", com.shyamu.translocwidget.bl.Utils.BASE_URL))
                 .setRequestInterceptor(request -> request.addHeader("x-rapidapi-key", key));
         RestAdapter adapter = builder.build();
-        return adapter.create(serviceClass);
+        return adapter.create(clientClass);
     }
 }

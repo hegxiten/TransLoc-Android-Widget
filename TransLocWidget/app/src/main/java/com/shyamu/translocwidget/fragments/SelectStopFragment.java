@@ -28,6 +28,7 @@ import rx.android.schedulers.AndroidSchedulers;
 
 import static com.shyamu.translocwidget.MainActivity.*;
 import static com.shyamu.translocwidget.bl.Utils.TransLocDataType.STOP;
+import static com.shyamu.translocwidget.bl.Utils.TransLocDataType.VEHICLE;
 
 
 public class SelectStopFragment extends BaseFragment {
@@ -74,8 +75,22 @@ public class SelectStopFragment extends BaseFragment {
                         STOP);
         stopsSub = client.stops(atw.getAgencyID())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::populateStopsListView,
-                        e -> handleServiceErrors(STOP, e, progressBar)
+                .subscribe(stops -> populateStopsListView(stops),
+                        e -> {
+                            handleServiceErrors(STOP, e, progressBar);
+                        }
+                );
+        TransLocClient client2 =
+                ServiceGenerator.createService(
+                        TransLocClient.class,
+                        Utils.BASE_URL,
+                        TRANSLOC_API_KEY,
+                        atw.getAgencyID(),
+                        VEHICLE);
+        client2.vehicles(atw.getAgencyID())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(vehicles -> Log.d("Zezhou", "onCreateView: Vehicle ID is: " + vehicles.toString()),
+                            e -> Log.d("Zezhou", "onCreateView: Error" + e)
                 );
 
         return rootView;
@@ -88,6 +103,7 @@ public class SelectStopFragment extends BaseFragment {
     }
 
     private void populateStopsListView(List<TransLocStop> stops) {
+
         progressBar.setVisibility(View.INVISIBLE);
         if (stops != null && !stops.isEmpty()) {
             ArrayList<TransLocStop> stopList = new ArrayList<>();

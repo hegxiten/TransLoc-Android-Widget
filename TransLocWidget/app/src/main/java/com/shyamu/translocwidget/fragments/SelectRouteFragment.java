@@ -27,6 +27,7 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 
 import static com.shyamu.translocwidget.bl.Utils.TransLocDataType.ROUTE;
+import static com.shyamu.translocwidget.bl.Utils.TransLocDataType.VEHICLE;
 
 public class SelectRouteFragment extends BaseFragment {
 
@@ -75,6 +76,7 @@ public class SelectRouteFragment extends BaseFragment {
                 .subscribe(this::populateRoutesListView,
                         e -> handleServiceErrors(ROUTE, e, progressBar)
                 );
+
         return rootView;
     }
 
