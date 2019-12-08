@@ -36,7 +36,7 @@ class ItemTypeAdapterFactory implements TypeAdapterFactory {
         final TypeAdapter<T> delegate = gson.getDelegateAdapter(this, type);
         final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
 
-        return new TypeAdapter<T>() {
+        TypeAdapter<T> tTypeAdapter = new TypeAdapter<T>() {
 
             public void write(JsonWriter out, T value) throws IOException {
                 delegate.write(out, value);
@@ -64,7 +64,7 @@ class ItemTypeAdapterFactory implements TypeAdapterFactory {
                             case ARRIVAL:
                                 Log.d(TAG, "dataType is ARRIVAL");
                                 // if there are arrival times available send them, else send empty json array
-                                if(jsonObject.getAsJsonArray("data").size() > 0){
+                                if (jsonObject.getAsJsonArray("data").size() > 0) {
                                     jsonElement = jsonObject.getAsJsonArray("data").get(0).getAsJsonObject().getAsJsonArray("arrivals");
                                 } else {
                                     jsonElement = new JsonArray();
@@ -102,5 +102,6 @@ class ItemTypeAdapterFactory implements TypeAdapterFactory {
                 return delegate.fromJsonTree(jsonElement);
             }
         }.nullSafe();
+        return tTypeAdapter;
     }
 }
