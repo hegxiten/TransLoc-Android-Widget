@@ -11,10 +11,11 @@ import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.shyamu.translocwidget.bl.Utils;
 
 import java.io.IOException;
-
-import static com.shyamu.translocwidget.bl.Utils.*;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Shyamal on 3/15/2015.
@@ -23,9 +24,9 @@ class ItemTypeAdapterFactory implements TypeAdapterFactory {
 
     private static final String TAG = "ItemTypeAdapterFactory";
     private String agencyId;
-    private TransLocDataType dataType;
+    private Utils.TransLocDataType dataType;
 
-    public ItemTypeAdapterFactory(String agencyId, TransLocDataType dataType) {
+    public ItemTypeAdapterFactory(String agencyId, Utils.TransLocDataType dataType) {
         this.agencyId = agencyId;
         this.dataType = dataType;
     }
@@ -68,6 +69,32 @@ class ItemTypeAdapterFactory implements TypeAdapterFactory {
                                 } else {
                                     jsonElement = new JsonArray();
                                 }
+                                break;
+                            case VEHICLE:
+                                Log.d(TAG, "dataType is VEHICLE");
+                                jsonElement = jsonObject.get("data").getAsJsonObject().get("1323");
+                                // getAsJsonObject first to output a JsonObject in order to further get
+                                break;
+                            case SEGMENT:
+                                Log.d(TAG, "dataType is SEGMENT");
+                                JsonObject jsonObjectData = jsonObject.getAsJsonObject("data");
+                                Set<Map.Entry<String, JsonElement>> set = jsonObjectData.entrySet();
+                                String value = "";
+                                for (Map.Entry<String, JsonElement> s : set) {
+                                    value += s.getKey();
+                                    value += ":";
+                                    String v = s.getValue().toString();
+                                    value += v.substring(1, v.length() - 1);
+                                    value += ",";
+                                }
+                                if (!value.isEmpty()) {
+                                    value = value.substring(0, value.length() - 1);
+                                }
+                                JsonObject jo = new JsonObject();
+                                jo.addProperty("segs", value);
+                                JsonArray ja = new JsonArray();
+                                ja.add(jo);
+                                jsonElement = ja;
                                 break;
                         }
                     }

@@ -1,9 +1,11 @@
 package com.shyamu.translocwidget.rest.service;
 
 import com.shyamu.translocwidget.rest.model.TransLocArrival;
+import com.shyamu.translocwidget.rest.model.TransLocSegment;
 import com.shyamu.translocwidget.rest.model.TransLocStop;
 import com.shyamu.translocwidget.rest.model.TransLocAgency;
 import com.shyamu.translocwidget.rest.model.TransLocRoute;
+import com.shyamu.translocwidget.rest.model.TransLocVehicle;
 
 import java.util.List;
 
@@ -28,4 +30,10 @@ public interface TransLocClient {
     Observable<List<TransLocArrival>> arrivalEstimates(@Query("agencies") String agencyId,
                                                        @Query("routes") String routeId,
                                                        @Query("stops") String stopId);
+
+    @GET("/vehicles.json")
+    Observable<List<TransLocVehicle>> vehicles (@Query("agencies") String agencyId);
+
+    @GET("/segments.json")
+    Observable<List<TransLocSegment>> segments (@Query("agencies") String agencyId);
 }

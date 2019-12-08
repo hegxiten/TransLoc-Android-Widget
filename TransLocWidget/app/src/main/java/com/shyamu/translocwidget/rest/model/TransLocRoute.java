@@ -2,6 +2,7 @@ package com.shyamu.translocwidget.rest.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
 
 public class TransLocRoute{
 
@@ -17,11 +18,10 @@ public class TransLocRoute{
     @SerializedName("color")
     public String color;
 
-    public String toString(){
-        if(shortName == null || shortName.equals("")) {
-            return longName;
-        } else {
-            return shortName + " - " + longName;
-        }
+    @SerializedName("segments")
+    public List<List<String>> segments;
+
+    public String toString() {
+        return segments.toString();
     }
 }
